@@ -54,6 +54,8 @@ class RoverState():
         self.ground_truth = ground_truth_3d # Ground truth worldmap
         self.mode = 'forward' # Current mode (can be forward or stop)
         self.throttle_set = 0.2 # Throttle setting when accelerating
+
+
         self.brake_set = 10 # Brake setting when braking
         # The stop_forward and go_forward fields below represent total count
         # of navigable terrain pixels.  This is a very crude form of knowing
@@ -77,7 +79,14 @@ class RoverState():
         self.near_sample = 0 # Will be set to telemetry value data["near_sample"]
         self.picking_up = 0 # Will be set to telemetry value data["picking_up"]
         self.send_pickup = False # Set to True to trigger rock pickup
-# Initialize our rover 
+
+
+        ## Custom by Duckhwan Kim
+        self.pos_history = np.zeros((2000,2000,1), dtype =np.float)
+        self.slow_cnt = 0
+        self.backward_cnt = 0
+        self.test = 10
+# Initialize our rover
 Rover = RoverState()
 
 # Variables to track frames per second (FPS)
@@ -192,7 +201,8 @@ if __name__ == '__main__':
         help='Path to image folder. This is where the images from the run will be saved.'
     )
     args = parser.parse_args()
-    
+
+    args.image_folder = "C:/Users/duckhwank/Documents/URND/RoboND-Python-StarterKit/RoboND-Rover-Project/output"
     #os.system('rm -rf IMG_stream/*')
     if args.image_folder != '':
         print("Creating image folder at {}".format(args.image_folder))
