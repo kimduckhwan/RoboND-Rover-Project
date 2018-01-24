@@ -2,7 +2,8 @@
 ### Writeup Template: You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
-
+### Please look at ./code for the python files and jupyter notebook
+### Please look at ./output for the video recorded for automation movement and output of ipynb 
 
 **The goals / steps of this project are the following:**  
 
