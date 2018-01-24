@@ -26,6 +26,9 @@ from supporting_functions import update_rover, create_output_images
 sio = socketio.Server()
 app = Flask(__name__)
 
+
+DKIM_DEBUG = 0
+
 # Read in ground truth map and create 3-channel green version for overplotting
 # NOTE: images are read in by default with the origin (0, 0) in the upper left
 # and y-axis increasing downward.
@@ -202,7 +205,8 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
 
-    args.image_folder = "C:/Users/duckhwank/Documents/URND/RoboND-Python-StarterKit/RoboND-Rover-Project/output"
+    if(DKIM_DEBUG==1):
+        args.image_folder = "C:/Users/duckhwank/Documents/URND/RoboND-Python-StarterKit/RoboND-Rover-Project/output"
     #os.system('rm -rf IMG_stream/*')
     if args.image_folder != '':
         print("Creating image folder at {}".format(args.image_folder))
